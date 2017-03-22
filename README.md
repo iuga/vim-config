@@ -19,3 +19,16 @@ My vim configuration for Python development
 - `Ctrl + t`: New Tab
 - `Shift + Left/Right Arrow`: Move between tabs
 - `Ctrl + Shift + f`: Search the word in all the project
+
+## Installation
+1. Install dependencies
+```bash
+# Ubuntu
+sudo apt-get install vim ack-grep
+# MacOs
+brew install vim ack
+```
+2. Inside vim execute
+```bash
+:BundleInstall
+```
