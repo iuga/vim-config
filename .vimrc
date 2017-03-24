@@ -32,12 +32,15 @@ set softtabstop=4
 " set listchars=eol:¬,tab:>-,trail:·,extends:>,precedes:<
 " set list
 
-" Bundles and Plugins (BundleInstall)
+" Bundles and Plugins
 "
-" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-"
-set rtp+=~/.vim/bundle/vundle          " without .git
-call vundle#rc()
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" :PluginList
+" :PluginInstall
+" :PluginClean
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
 Bundle 'gmarik/vundle'
@@ -47,6 +50,8 @@ Bundle 'ervandew/supertab'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'scrooloose/syntastic'
 Bundle 'mileszs/ack.vim'
+call vundle#end()
+filetype plugin indent on
 
 " Airline configuration
 set laststatus=2

@@ -28,7 +28,15 @@ sudo apt-get install vim ack-grep
 # MacOs
 brew install vim ack
 ```
-2. Inside vim execute
+
+2. Install Vundle & Plugins
 ```bash
-:BundleInstall
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
+```
+
+3. Install the [Fisa](http://fisadev.github.io/fisa-vim-config/) color scheme:
+```bash
+mkdir ~/.vim/colors
+cp ~/.vim/bundle/fisa-vim-colorscheme/colors/fisa.vim ~/.vim/colors/fisa.vim
 ```
