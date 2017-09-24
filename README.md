@@ -14,11 +14,13 @@ My vim configuration for Python development
 
 ## Basic Usage
 - `Ctrl + \`: Toggle the navigation bar using netwr
+- `Ctrl + m`: Reveal the current file in the tree view
 - `Ctrl + p`: Toggle and search files in the project
 - `Ctrl + n`: Select all the word occurrences and edit them in bulk
 - `Ctrl + t`: New Tab
 - `Shift + Left/Right Arrow`: Move between tabs
-- `Ctrl + Shift + f`: Search the word in all the project
+- `Ctrl + f`: Search the word in all the project
+- `Ctrl + [hjkl]`: Move between the splits
 
 ## Installation
 1. Install dependencies
@@ -33,10 +35,4 @@ brew install vim ack
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
-```
-
-3. Install the [Fisa](http://fisadev.github.io/fisa-vim-config/) color scheme:
-```bash
-mkdir ~/.vim/colors
-cp ~/.vim/bundle/fisa-vim-colorscheme/colors/fisa.vim ~/.vim/colors/fisa.vim
 ```
