@@ -11,10 +11,10 @@ My vim configuration for Python development
 - Syntastic
 - Ack
 - PEP8 check on save
+- NERDTree
 
 ## Basic Usage
-- `Ctrl + \`: Toggle the navigation bar using netwr
-- `Ctrl + m`: Reveal the current file in the tree view
+- `Ctrl + \`: Toggle the navigation bar using NERDTRee
 - `Ctrl + p`: Toggle and search files in the project
 - `Ctrl + n`: Select all the word occurrences and edit them in bulk
 - `Ctrl + t`: New Tab
