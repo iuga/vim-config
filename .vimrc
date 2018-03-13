@@ -105,17 +105,20 @@ let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.cov/*,*/conda/*,*/venv/*,*/datasets/*
 let g:ctrlp_cmd = 'CtrlPMixed'
 
-" Open the File Explorer: netrw
-"let g:netrw_liststyle = 3 " Use a tree style listing of our directories
-"let g:netrw_banner = 0
-"map <C-\> :20Lexplore<CR>
-"let g:netrw_browse_split=4      " Open file in previous buffer
-"let g:netrw_list_hide='.*\.swp$,.*\.pyc,__pycache__'
-"let g:netrw_altv = 1 " Then we’ll make it open the file in the previous window to the right of the project drawer
-
 " NERDTree Tabs
-map <C-\> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeFind<CR>
+" Check if NERDTree is open or active, Toggle if not, Find if it is
+function MyNerdToggle()
+    if &filetype == 'nerdtree'
+        :NERDTreeToggle
+    else
+        :NERDTreeFind
+    endif
+endfunction
+
+"map <C-e> :NERDTreeFind<CR>
+"map <C-\> :NERDTreeToggle<CR>
+nnoremap <C-\> :call MyNerdToggle()<CR>
+command NTF :NERDTreeFind
 
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
