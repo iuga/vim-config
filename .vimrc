@@ -1,4 +1,3 @@
-set nocompatible
 set fileformats=unix,dos,mac
 set number
 
@@ -9,16 +8,16 @@ set autoread "Reload files changed outside vim
 set mouse=a
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
+set backspace=indent,eol,start
 
 "Theme
 " use 256 colors when possible
 if (&term =~? 'mlterm\|xterm\|xterm-256\|screen-256') || has('nvim')
     let &t_Co = 256
-    "colorscheme fisa
-    "colorscheme Tomorrow-Night
     set background=dark
     let g:gruvbox_contrast_dark='hard'
     let g:gruvbox_italic=0
+    autocmd vimenter * ++nested colorscheme gruvbox
     colorscheme gruvbox
     if g:colors_name == "gruvbox"
         highlight Normal ctermbg=0 guibg=#000000
@@ -53,7 +52,6 @@ Plugin 'VundleVim/Vundle.vim'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
 Bundle 'gmarik/vundle'
-Bundle 'fisadev/fisa-vim-colorscheme'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'ervandew/supertab'
 Bundle 'terryma/vim-multiple-cursors'
@@ -67,6 +65,8 @@ Bundle 'tmhedberg/SimpylFold'
 Bundle 'tpope/vim-fugitive'
 call vundle#end()
 filetype plugin indent on
+
+autocmd vimenter * ++nested colorscheme gruvbox
 
 " Airline configuration
 set laststatus=2
@@ -107,17 +107,17 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 
 " NERDTree Tabs
 " Check if NERDTree is open or active, Toggle if not, Find if it is
-function MyNerdToggle()
-    if &filetype == 'nerdtree'
-        :NERDTreeToggle
+function! NerdTreeToggleFind()
+    if exists("g:NERDTree") && g:NERDTree.IsOpen()
+        NERDTreeClose
+    elseif filereadable(expand('%'))
+        NERDTreeFind
     else
-        :NERDTreeFind
+        NERDTree
     endif
 endfunction
 
-"map <C-e> :NERDTreeFind<CR>
-"map <C-\> :NERDTreeToggle<CR>
-nnoremap <C-\> :call MyNerdToggle()<CR>
+nnoremap <C-\> :call NerdTreeToggleFind()<CR>
 command NTF :NERDTreeFind
 
 " close vim if the only window left open is a NERDTree
@@ -139,8 +139,6 @@ imap <C-v> <esc>:set paste<cr>:r !pbpaste<cr>:set nopaste<cr>
 " Move between tabs Shift-[left arrow key] and Shift-[right arrow key]
 map <S-Right> :tabn<cr>
 map <S-Left>  :tabp<cr>
-"map <S-Right> :bn<cr>
-"map <S-Left>  :bp<cr>
 
 " Shorcut to save the document
 noremap <silent> <C-s> :update<CR>
