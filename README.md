@@ -1,5 +1,5 @@
-# vim-config
-My vim configuration for Python development
+# My NeoVim Config
+My NeVim configuration for Python/Go development
 
 ![](./screenshot.png)
 
@@ -9,17 +9,15 @@ My vim configuration for Python development
 - CtrlP
 - Vim-Multiple-Cursors
 - Syntastic
-- Ack
 - PEP8 check on save
 - NERDTree
 
 ## Basic Usage
-- `Ctrl + \`: Toggle the navigation bar using NERDTRee
+- `Ctrl + t`: New Tab
 - `Ctrl + p`: Toggle and search files in the project
 - `Ctrl + n`: Select all the word occurrences and edit them in bulk
-- `Ctrl + t`: New Tab
+- `Ctrl + \`: Toggle the navigation bar using NERDTRee
 - `Shift + Left/Right Arrow`: Move between tabs
-- `Ctrl + f`: Search the word in all the project
 - `Ctrl + [hjkl]`: Move between the splits
 
 ## Installation
@@ -35,7 +33,7 @@ brew install node
 
 2. If NeoVim
 
-```
+```bash
 vim ~/.zshrc 
 # Then add:
 # Aliases
@@ -45,10 +43,16 @@ alias oldvim="vim"
 
 ```
 
-2. Install Vundle & Plugins
+3. Install Vundle & Plugins
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 mkdir ~/.vim/colors
 cp ~/.vim/bundle/gruvbox/colors/gruvbox.vim ~/.vim/colors/
+```
+
+4. Install the autocomplete engines
+
+```bash
+:CocInstall coc-go coc-python
 ```
