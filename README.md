@@ -31,6 +31,18 @@ sudo apt-get install vim ack-grep
 brew install vim ack
 ```
 
+2. If NeoVim
+
+```
+vim ~/.zshrc 
+# Then add:
+# Aliases
+alias vim="nvim"
+alias vi="nvim"
+alias oldvim="vim"
+
+```
+
 2. Install Vundle & Plugins
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
