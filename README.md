@@ -1,7 +1,7 @@
 # vim-config
 My vim configuration for Python development
 
-![](./screenshot.new.png)
+![](./screenshot.png)
 
 ## Perks and Skills
 - Great Color scheme ;)
