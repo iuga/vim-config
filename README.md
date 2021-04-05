@@ -29,6 +29,8 @@ My vim configuration for Python development
 sudo apt-get install vim ack-grep
 # MacOs
 brew install vim ack
+# CoC Autocomplete
+brew install node
 ```
 
 2. If NeoVim
