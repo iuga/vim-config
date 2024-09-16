@@ -22,6 +22,7 @@ return {
          desc = "Explorer NeoTree (cwd)",
        },
        { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
+       { "<C-\\>", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
        {
          "<leader>ge",
          function()

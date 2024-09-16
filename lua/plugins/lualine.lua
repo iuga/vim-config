@@ -9,6 +9,9 @@ return   {
         local theme = noirbuddy_lualine.theme
         local sections = noirbuddy_lualine.sections
         local inactive_sections = noirbuddy_lualine.inactive_sections
+
+        sections.lualine_c = {{'filename', path = 1}}
+
         require("lualine").setup {
             options = {
                 icons_enabled = true,
@@ -22,5 +25,5 @@ return   {
             sections = sections,
             inactive_sections = inactive_sections,
         }
-    end
+    end,
 }

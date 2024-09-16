@@ -40,6 +40,16 @@ return {
         function() require("telescope.builtin").buffers() end,
         desc = '[ ] Find existing buffers',
       },
+      {
+        "<leader>sr",
+        function() require("telescope.builtin").lsp_references() end,
+        desc = '[S]earch [R]eferences',
+      },
+      {
+        "<leader>sg",
+        function() require("telescope.builtin").live_grep() end,
+        desc = '[S]earch [G]rep',
+      },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -71,10 +81,17 @@ return {
       -- Enable telescope extensions, if they are installed
       pcall(require("telescope").load_extension, "fzf")
       pcall(require("telescope").load_extension, "ui-select")
+      pcall(require("telescope").load_extension, "telescope-dap.nvim")
+      pcall(require("telescope").load_extension, "telescope-lazy-plugins.nvim")
     end,
   },
   {
     "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    dependencies = {
+        "nvim-telescope/telescope.nvim", 
+        "nvim-telescope/telescope-dap.nvim",
+        "nvim-lua/plenary.nvim",
+        "polirritmico/telescope-lazy-plugins.nvim",
+    }
   }
 }
