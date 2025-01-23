@@ -30,10 +30,10 @@ vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 vim.g.lazygit_config = true
 
 -- Options for the LazyVim statuscolumn
-vim.g.lazyvim_statuscolumn = {
-  folds_open = false, -- show fold sign when fold is open
-  folds_githl = false, -- highlight fold sign with git sign color
-}
+-- vim.g.lazyvim_statuscolumn = {
+--   folds_open = false, -- show fold sign when fold is open
+--   folds_githl = false, -- highlight fold sign with git sign color
+-- }
 
 -- Optionally setup the terminal to use
 -- This sets `vim.o.shell` and does some additional configuration for:
@@ -104,7 +104,7 @@ opt.spelloptions:append("noplainbuffer")
 opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.splitright = true -- Put new windows right of current
-opt.statuscolumn = [[%!v:lua.require'lazyvim.util'.ui.statuscolumn()]]
+-- opt.statuscolumn = [[%!v:Snacks.statuscolumn()]]
 opt.tabstop = 4 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.timeoutlen = vim.g.vscode and 1000 or 300 -- Lower than default (1000) to quickly trigger which-key

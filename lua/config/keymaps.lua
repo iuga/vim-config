@@ -32,5 +32,14 @@ map({ "n", "v" }, "<leader>cf", function()
   LazyVim.format({ force = true })
 end, { desc = "Format" })
 
+-- floating terminal
+map("n", "<leader>fT", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
+map("n", "<leader>ft", function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
+map("n", "<c-/>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
+map("n", "<c-_>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "which_key_ignore" })
+
+-- Terminal Mappings
+map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
