@@ -1,6 +1,7 @@
 return {
     {
         "williamboman/mason.nvim",
+        dependencies = { "mfussenegger/nvim-dap" },
         opts = { ensure_installed = { "goimports" } },
         config = function()
             require("mason").setup({})
@@ -16,13 +17,14 @@ return {
     },
     {
         "jay-babu/mason-nvim-dap.nvim",
+        dependencies = { "williamboman/mason.nvim" },
         config = function()
             require("mason-nvim-dap").setup({
                 ensure_installed = { "python", "delve" },
                 handlers = {
-                    function(config)
-                        require('mason-nvim-dap').default_setup(config)
-                    end,
+                    -- function(config)
+                    --     require('mason-nvim-dap').default_setup(config)
+                    -- end,
                     python = function(config)
                         config.adapters = {
                             type = "executable",
