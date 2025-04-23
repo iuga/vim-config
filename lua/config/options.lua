@@ -20,7 +20,7 @@ vim.g.lazyvim_picker = "telescope"
 -- * the name of a detector function like `lsp` or `cwd`
 -- * a pattern or array of patterns like `.git` or `lua`.
 -- * a function with signature `function(buf) -> string|string[]`
-vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
+vim.g.root_spec = { "lsp", {"pyproject.toml", ".git", "lua" }, "cwd" }
 
 -- LazyVim automatically configures lazygit:
 --  * theme, based on the active colorscheme.
@@ -128,3 +128,11 @@ end
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+
+-- The order of your `lazy.nvim` imports is incorrect:
+-- `lazyvim.plugins` should be first
+-- followed by any `lazyvim.plugins.extras`
+-- and finally your own `plugins`
+-- If you think you know what you're doing, you can disable this check with:
+vim.g.lazyvim_check_order = false

@@ -50,6 +50,11 @@ return {
         function() require("telescope.builtin").live_grep() end,
         desc = '[S]earch [G]rep',
       },
+      {
+        "<leader>gd",
+        function() require("telescope.builtin").lsp_definitions() end,
+        desc = '[G]o [D]efinitions',
+      },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",

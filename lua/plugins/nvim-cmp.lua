@@ -53,6 +53,8 @@ return {
                     end, { "i", "s" }),
                 }),
                 sources = {
+                     -- Copilot Source
+                    { name = "copilot", group_index = 2 },
                     { name = "nvim_lsp" },
                     { name = "vsnip" },
                     { name = "path" },

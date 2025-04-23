@@ -43,3 +43,6 @@ map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+
+-- New Tab
+map("n", "<leader>tn", ":tabnew<cr>", {desc = "New Tab"})

@@ -1,3 +1,5 @@
+local fmt = string.format
+
 return {
     "olimorris/codecompanion.nvim",
     dependencies = {
@@ -48,13 +50,20 @@ return {
             },
             strategies = {
                 chat = {
-                    adapter = "assist",
+                    adapter = "copilot",
+                    tools = {
+                        ["mcp"] = {
+                            -- calling it in a function would prevent mcphub from being loaded before it's needed
+                            callback = function() return require("mcphub.extensions.codecompanion") end,
+                            description = "Call tools and resources from the MCP Servers",
+                        }
+                    }
                 },
                 inline = {
-                    adapter = "assist",
+                    adapter = "copilot",
                 },
                 agent = {
-                    adapter = "assist",
+                    adapter = "copilot",
                 },
             },
             display = {
@@ -71,6 +80,38 @@ return {
                 --       layout = "vertical", -- float|vertical|horizontal|buffer
                 --     },
                 --   },
+            },
+            prompt_library = {
+                ["Code Review"] = {
+                    strategy = "chat",
+                    description = "Let's code review the changes",
+                    prompts = {
+                        {
+                            role = "user",
+                            content = function()
+                                return fmt(
+                                    [[You are an experienced developer and now it's time to perform a code-review of the changes. 
+Please consider: Code readability and structure; Performance implications; Error handling and logging; Security concerns; Testing and Coverage; Code duplication; Code clarity and dependencies; Documentation and comments; Compliance with coding standards.
+Do not explain what you are going to do, just provide the feedback in bullet points as Markdown.
+Be short and consice. Diff of the changes:
+```diff
+%s
+```]],
+                                    vim.fn.system("git diff --no-ext-diff --staged")
+                                )
+                            end,
+                            opts = {
+                                contains_code = true,
+                            },
+                        },
+                    },
+                    opts = {
+                        auto_submit = true,
+                        adapter = {
+                            name = "assist",
+                        },
+                    },
+                }
             },
             -- opts = {
             --   ---@param adapter CodeCompanion.Adapter
