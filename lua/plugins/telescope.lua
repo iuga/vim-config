@@ -4,7 +4,6 @@ return {
     event = "VimEnter",
     branch = "0.1.x",
     keys = {
-      -- stylua: ignore
       {
         "<leader>sf",
         function() require("telescope.builtin").find_files() end,

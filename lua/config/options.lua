@@ -99,6 +99,7 @@ opt.sidescrolloff = 8 -- Columns of context
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 opt.smartcase = true -- Don't ignore case with capitals
 opt.smartindent = true -- Insert indents automatically
+opt.spell = false -- Spell Check
 opt.spelllang = { "en" }
 opt.spelloptions:append("noplainbuffer")
 opt.splitbelow = true -- Put new windows below current
@@ -136,3 +137,16 @@ vim.g.markdown_recommended_style = 0
 -- and finally your own `plugins`
 -- If you think you know what you're doing, you can disable this check with:
 vim.g.lazyvim_check_order = false
+
+vim.diagnostic.config({
+    virtual_text = {
+        -- Display virtual text diagnostics
+        -- Set to true to enable, false to disable
+        -- Options can also include source, prefix, etc.
+        -- Example: { source = "always", prefix = "● " }
+        true,
+    },
+    update_in_insert = true, -- Update diagnostics while in insert mode
+    underline = true,       -- Underline problematic code
+    -- Other options like float, signs, etc. can also be configured
+})

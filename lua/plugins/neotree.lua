@@ -10,26 +10,30 @@ return {
         {
             "<leader>fe",
             function()
-                require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
+                require("neo-tree.command").execute({ toggle = true, dir = vim.fn.getcwd() })
             end,
-            desc = "Explorer NeoTree (Root Dir)",
+            desc = "Explorer NeoTree (cwd)",
         },
         {
             "<leader>fE",
             function()
-                require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
+                require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
             end,
-            desc = "Explorer NeoTree (cwd)",
+            desc = "Explorer NeoTree (cwd via uv)",
         },
-        { 
-            "<leader>e", "<leader>fe", 
-            desc = "Explorer NeoTree (Root Dir)", 
-            remap = true 
+        {
+            "<leader>e",
+            function()
+                require("neo-tree.command").execute({ toggle = true, dir = vim.fn.getcwd() })
+            end,
+            desc = "Alias for <leader>fe",
         },
-        { 
-            "<leader>E", "<leader>fE", 
-            desc = "Explorer NeoTree (cwd)", 
-            remap = true 
+        {
+            "<leader>E",
+            function()
+                require("neo-tree.command").execute({ toggle = true, dir = vim.fn.getcwd() })
+            end,
+            desc = "Alias for <leader>fE",
         },
         {
             "<leader>ge",
@@ -44,7 +48,7 @@ return {
                 require("neo-tree.command").execute({ source = "buffers", toggle = true })
             end,
             desc = "Buffer Explorer",
-        },  { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+        },
     },
     opts = {
         sources = { "filesystem", "buffers", "git_status" },

@@ -1,6 +1,4 @@
--- DO NOT USE `LazyVim.safe_keymap_set` IN YOUR OWN CONFIG!!
--- use `vim.keymap.set` instead
-local map = LazyVim.safe_keymap_set
+local map = vim.keymap.set
 
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
@@ -46,3 +44,7 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 
 -- New Tab
 map("n", "<leader>tn", ":tabnew<cr>", {desc = "New Tab"})
+
+-- QuickFix
+map("n", "<C-[>", ":cprev<cr>", {desc="Move Prev in QuickFix"})
+map("n", "<C-]>", ":cnext<cr>", {desc="Move Next in QuickFix"})
