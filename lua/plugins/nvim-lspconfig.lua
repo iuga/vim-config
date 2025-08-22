@@ -44,15 +44,17 @@ return {
                 pylsp = {
                     plugins = {
                         -- formatter options
-                        black = { enabled = true },
+                        black = { enabled = true},
                         autopep8 = { enabled = false },
                         yapf = { enabled = false },
                         -- linter options
-                        pycodestyle = { enabled = true, ignore = {'E501', 'E231'}, maxLineLenght=120 },
+                        pycodestyle = { enabled = true, ignore = {'E501', 'E231'}, maxLineLength = 120},
                         pylint = {
                             enabled = true,
                             executable = "pylint",
                             args = {
+                                "--ignore-long-lines", -- long lines
+                                "--disable=E501", -- line too long
                                 "--disable=C0301", -- line too long
                                 "--disable=C0114", -- missing module docstring
                                 "--disable=C0116"  -- missing function or method docstring

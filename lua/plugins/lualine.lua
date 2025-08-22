@@ -1,6 +1,6 @@
 return   {
-  "nvim-lualine/lualine.nvim",
-  dependencies = {
+    "nvim-lualine/lualine.nvim",
+    dependencies = {
         "jesseleite/nvim-noirbuddy",
         "nvim-tree/nvim-web-devicons"
     },
