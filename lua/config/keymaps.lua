@@ -25,15 +25,10 @@ map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
--- formatting
-map({ "n", "v" }, "<leader>cf", function()
-  LazyVim.format({ force = true })
-end, { desc = "Format" })
-
 -- floating terminal
 map("n", "<leader>fT", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
 map("n", "<leader>ft", function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
-map("n", "<c-/>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
+map("n", "<c-/>",      function() Snacks.terminal() end, { desc = "Terminal (Root Dir)" })
 map("n", "<c-_>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "which_key_ignore" })
 
 -- Terminal Mappings

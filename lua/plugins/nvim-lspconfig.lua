@@ -2,26 +2,8 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = { 'saghen/blink.cmp' },
     config = function()
-        local lspconfig = require("lspconfig")
         local capabilities = require('blink.cmp').get_lsp_capabilities()
-
-        lspconfig.gopls.setup({
-            on_attach = function(client, bufnr)
-                vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-                local bufopts = { noremap=true, silent=true, buffer=bufnr }
-                vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-                vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-                vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-                vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-                vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-                vim.keymap.set('n', '<space>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, bufopts)
-                vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-                vim.keymap.set('n', 'cd', vim.lsp.buf.rename, bufopts)
-                vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-                vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-                vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-            end,
+        vim.lsp.config("gopls", {
             capabilities = capabilities,
             settings = {
                 gopls = {
@@ -37,8 +19,10 @@ return {
                 usePlaceholders = true,
             }
         })
-        lspconfig.golangci_lint_ls.setup({})
-        lspconfig.pylsp.setup({
+        vim.lsp.config("golangci_lint_ls", {
+            capabilities = capabilities,
+        })
+        vim.lsp.config("pylsp", {
             capabilities = capabilities,
             settings = {
                 pylsp = {
@@ -71,7 +55,6 @@ return {
                 },
             },
         })
-
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
             callback = function(event)
@@ -87,6 +70,7 @@ return {
                 map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
                 map('K', vim.lsp.buf.hover, 'Hover Documentation')
                 map('<leader>f', vim.lsp.buf.format, '[F]ormat Buffer')
+                map('<leader>r', vim.lsp.buf.rename, '[R]ename Variable')
             end,
         })
     end

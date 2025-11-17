@@ -14,7 +14,7 @@ return {
         },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "pylsp", "gopls", "golangci_lint_ls" },
+                ensure_installed = { "pylsp", "gopls", "golangci_lint"},
             })
         end
     }
